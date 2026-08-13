@@ -1,0 +1,6 @@
+# This repo lives at $HOME and should only ever track .bash_aliases.
+# Ignore everything by default; explicitly un-ignore only that file.
+*
+
+!.gitignore
+!.bash_aliases
