@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euo pipefail
+allowed="^(\.bash_aliases|\.gitignore|\.githooks/pre-commit)$"
+bad=$(git diff --cached --name-only | grep -Ev "$allowed" || true)
+if [ -n "$bad" ]; then
+  echo "pre-commit: refusing to commit files outside the allowed set (.bash_aliases, .gitignore):" >&2
+  echo "$bad" >&2
+  exit 1
+fi
